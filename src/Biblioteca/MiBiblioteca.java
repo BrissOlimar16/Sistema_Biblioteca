@@ -12,6 +12,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTable;
+import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
 
 public class MiBiblioteca extends javax.swing.JFrame {
@@ -126,6 +127,7 @@ public class MiBiblioteca extends javax.swing.JFrame {
         Alumnos = new javax.swing.JDialog();
         jScrollPane5 = new javax.swing.JScrollPane();
         tablaAlumno = new javax.swing.JTable();
+        jLabel11 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         IngresarAlumnos = new javax.swing.JMenu();
         darAlta = new javax.swing.JMenuItem();
@@ -782,6 +784,8 @@ public class MiBiblioteca extends javax.swing.JFrame {
         });
         jScrollPane5.setViewportView(tablaAlumno);
 
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Biblioteca3.jpg"))); // NOI18N
+
         IngresarAlumnos.setText("Registrar Alumnos");
 
         darAlta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/icons8-añadir-16.png"))); // NOI18N
@@ -822,14 +826,21 @@ public class MiBiblioteca extends javax.swing.JFrame {
             .addGroup(AlumnosLayout.createSequentialGroup()
                 .addGap(82, 82, 82)
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 384, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(323, Short.MAX_VALUE))
+                .addGap(65, 65, 65)
+                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 506, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(104, Short.MAX_VALUE))
         );
         AlumnosLayout.setVerticalGroup(
             AlumnosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(AlumnosLayout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 539, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addGroup(AlumnosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(AlumnosLayout.createSequentialGroup()
+                        .addGap(79, 79, 79)
+                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 539, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(AlumnosLayout.createSequentialGroup()
+                        .addGap(102, 102, 102)
+                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(89, Short.MAX_VALUE))
         );
 
         RegistroAlumno.setTitle("Alumnos");
@@ -1796,20 +1807,26 @@ public class MiBiblioteca extends javax.swing.JFrame {
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
         try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MiBiblioteca.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MiBiblioteca.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MiBiblioteca.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MiBiblioteca.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            // select Look and Feel
+             //look = "com.jtattoo.plaf.acryl.AcrylLookAndFeel";
+            //look = "com.jtattoo.plaf.aero.AeroLookAndFeel";
+            //look = "com.jtattoo.plaf.aluminium.AluminiumLookAndFeel";
+            //look = "com.jtattoo.plaf.bernstein.BernsteinLookAndFeel";
+            //look = "com.jtattoo.plaf.fast.FastLookAndFeel";
+            //look = "com.jtattoo.plaf.graphite.GraphiteLookAndFeel";
+            //look = "com.jtattoo.plaf.hifi.HiFiLookAndFeel";
+            //look = "com.jtattoo.plaf.luna.LunaLookAndFeel";
+            //look = "com.jtattoo.plaf.mcwin.McWinLookAndFeel";
+            //look = "com.jtattoo.plaf.mint.MintLookAndFeel";
+            //look = "com.jtattoo.plaf.noire.NoireLookAndFeel";
+            //look = "com.jtattoo.plaf.smart.SmartLookAndFeel";
+            //look = "com.jtattoo.plaf.texture.TextureLookAndFeel";
+            UIManager.setLookAndFeel("com.jtattoo.plaf.mint.MintLookAndFeel");
+            // start application
+            
+        }
+        catch (Exception ex) {
+            ex.printStackTrace();
         }
         //</editor-fold>
 
@@ -1865,6 +1882,7 @@ public class MiBiblioteca extends javax.swing.JFrame {
     private javax.swing.JLabel etiqueta2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
