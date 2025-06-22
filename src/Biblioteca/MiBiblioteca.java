@@ -1319,6 +1319,7 @@ public class MiBiblioteca extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(RegistroAlumno,"Información actualizada..");
             nombre.setText("");
             MatriculaAlumno.setText("");
+            RegistroAlumno.dispose();
             indice=-1;
         }
         else{
@@ -1332,6 +1333,7 @@ public class MiBiblioteca extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(RegistroAlumno,"Información eliminada..");
             nombre.setText("");
             MatriculaAlumno.setText("");
+            RegistroAlumno.dispose();
             indice=-1;
         }
     }//GEN-LAST:event_EliminarInfoActionPerformed
@@ -1421,7 +1423,6 @@ public class MiBiblioteca extends javax.swing.JFrame {
     }
     
     public int BuscarMatricula(){
-        int indice=-1;
         String matricula = JOptionPane.showInputDialog(Alumnos, "Ingrese la matricula del Alumno");
         for(IngresarA alumno : listaAlumnos){
             if(alumno.getMatricula().equals(matricula)){
