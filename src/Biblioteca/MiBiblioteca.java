@@ -95,6 +95,7 @@ public class MiBiblioteca extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         txtinformacion_prestamo = new javax.swing.JTextArea();
         btnAceptarLibro = new javax.swing.JButton();
+        btndevolver = new javax.swing.JButton();
         ActualizarEle = new javax.swing.JDialog();
         jLabel14 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -348,7 +349,8 @@ public class MiBiblioteca extends javax.swing.JFrame {
                 .addGap(64, 64, 64)
                 .addGroup(PrestamosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnSolicitar)
-                    .addComponent(btncan)))
+                    .addComponent(btncan))
+                .addContainerGap(91, Short.MAX_VALUE))
         );
 
         consulta.setMinimumSize(new java.awt.Dimension(455, 349));
@@ -447,6 +449,14 @@ public class MiBiblioteca extends javax.swing.JFrame {
             }
         });
 
+        btndevolver.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btndevolver.setText("Devolver");
+        btndevolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btndevolverActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout SolicitanteLayout = new javax.swing.GroupLayout(Solicitante.getContentPane());
         Solicitante.getContentPane().setLayout(SolicitanteLayout);
         SolicitanteLayout.setHorizontalGroup(
@@ -462,11 +472,13 @@ public class MiBiblioteca extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(txtMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(SolicitanteLayout.createSequentialGroup()
-                        .addGap(180, 180, 180)
-                        .addComponent(btnAceptarLibro, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(SolicitanteLayout.createSequentialGroup()
                         .addGap(143, 143, 143)
-                        .addComponent(etiqueta2)))
+                        .addComponent(etiqueta2))
+                    .addGroup(SolicitanteLayout.createSequentialGroup()
+                        .addGap(177, 177, 177)
+                        .addGroup(SolicitanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btndevolver, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnAceptarLibro, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(105, Short.MAX_VALUE))
         );
         SolicitanteLayout.setVerticalGroup(
@@ -480,9 +492,11 @@ public class MiBiblioteca extends javax.swing.JFrame {
                     .addComponent(txtMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
+                .addGap(18, 18, 18)
                 .addComponent(btnAceptarLibro, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btndevolver, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(10, Short.MAX_VALUE))
         );
 
         ActualizarEle.setTitle("Actualizar");
@@ -1200,7 +1214,7 @@ public class MiBiblioteca extends javax.swing.JFrame {
     private void btnBuscarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarPedidoActionPerformed
         mostrarTabla(tablaElementos);
         String x = txtBuscarPedido.getText().trim();
-        buscando(x);
+        buscando(x,1);
         txtBuscarPedido.setText("");
         if(letrero.getText().equals("Encontrado"))
             btnSolicitar.setEnabled(true);
@@ -1224,7 +1238,8 @@ public class MiBiblioteca extends javax.swing.JFrame {
         etiqueta2.setText("Prestamo del elemento");
         Solicitante.setBounds(0, 0, 500, 500);
         Solicitante.setLocationRelativeTo(null);
-        
+        btndevolver.setVisible(false);
+        btnAceptarLibro.setVisible(true);
         IngresarL zxx= listaElementos.get(w);
         txtinformacion_prestamo.setText(zxx.toString());
     }//GEN-LAST:event_btnSolicitarActionPerformed
@@ -1336,6 +1351,9 @@ public class MiBiblioteca extends javax.swing.JFrame {
         etiqueta2.setText("Devolución de elemento");
         Solicitante.setBounds(0, 0, 500, 500);
         Solicitante.setLocationRelativeTo(null);
+        txtMatricula.setText("");
+        btnAceptarLibro.setVisible(false);
+        btndevolver.setVisible(true);
     }//GEN-LAST:event_btndevolucionActionPerformed
 
     private void txtBuscarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscarPedidoActionPerformed
@@ -1506,6 +1524,30 @@ public class MiBiblioteca extends javax.swing.JFrame {
             evt.consume();
         }
     }//GEN-LAST:event_txt3KeyTyped
+
+    private void btndevolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btndevolverActionPerformed
+        boolean alumnoEncontrado = false;
+            for (IngresarA alumno : listaAlumnos) {
+                if (alumno.getMatricula().equals(txtMatricula.getText())) {
+                    int x=buscando(txtMatricula.getText(),6);
+                    IngresarL zx = listaElementos.get(x);
+                    txtinformacion_prestamo.setText(zx.toString());
+                    JOptionPane.showMessageDialog(Prestamos,"gracias por regresar, hasta pronto "+alumno.getNombre());
+                    zx.setMatri("- - -");
+                    zx.setEstado("Esta disponible");
+                    txtMatricula.setText("");
+                    alumnoEncontrado = true;
+                    break;
+                }
+            }
+            
+            if (!alumnoEncontrado) {
+                JOptionPane.showMessageDialog(Prestamos, "No se encontró el usuario con la matrícula proporcionada.");
+                txtMatricula.setText("");
+            }
+        txtMatricula.setText("");
+        txtinformacion_prestamo.setText("");
+    }//GEN-LAST:event_btndevolverActionPerformed
     
     
     public static void buscar(ArrayList<IngresarL> libro,JTable x) {
@@ -1516,7 +1558,8 @@ public class MiBiblioteca extends javax.swing.JFrame {
                 a.getAutor(),
                 a.getFecha(),
                 a.getEditorial(),
-                a.getEstado()
+                a.getEstado(),
+                a.getMatri()
         };
          t.addRow(fila);
                 
@@ -1525,11 +1568,11 @@ public class MiBiblioteca extends javax.swing.JFrame {
         x.setModel(t);
     }
    
-    public int buscando(String x){
+    public int buscando(String x,int c){
         String tp, ti, a, f, e;
         boolean found = false;
         for (int i = 0; i < tablaElementos.getRowCount(); i++) {
-            Object value = tablaElementos.getValueAt(i, 1); 
+            Object value = tablaElementos.getValueAt(i, c); 
             if (value != null && value.toString().equals(x)) {
                 found = true;
                 tp = (String) tablaElementos.getValueAt(i, 0);
@@ -1547,6 +1590,7 @@ public class MiBiblioteca extends javax.swing.JFrame {
         }
         return w;
     }
+    
     public static void limpiaTabla(){
         int a=t.getRowCount();      
         while(a!=0){ // Ciclo para Borrar la Tabla 1
@@ -1679,6 +1723,7 @@ public class MiBiblioteca extends javax.swing.JFrame {
     private javax.swing.JButton btncan;
     private javax.swing.JButton btncancelar;
     private javax.swing.JButton btndevolucion;
+    private javax.swing.JButton btndevolver;
     private javax.swing.JButton btningresar;
     private javax.swing.JButton btnsolicitar;
     private javax.swing.JButton cancelar;
