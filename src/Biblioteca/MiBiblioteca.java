@@ -395,7 +395,7 @@ public class MiBiblioteca extends javax.swing.JFrame {
         jScrollPane2.setViewportView(tablaElementos);
 
         btnEliminar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Biblioteca/icons8-papelera-llena-16.png"))); // NOI18N
+        btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/icons8-papelera-llena-16.png"))); // NOI18N
         btnEliminar.setText("Eliminar");
         btnEliminar.setEnabled(false);
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
@@ -802,7 +802,7 @@ public class MiBiblioteca extends javax.swing.JFrame {
         });
         IngresarAlumnos.add(actualizarInfo);
 
-        eliminarAlumno.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Biblioteca/icons8-menos-16.png"))); // NOI18N
+        eliminarAlumno.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/icons8-menos-16.png"))); // NOI18N
         eliminarAlumno.setText("Eliminar registro de alumno");
         eliminarAlumno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -857,7 +857,7 @@ public class MiBiblioteca extends javax.swing.JFrame {
         });
 
         registroA.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        registroA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Biblioteca/icons8-añadir-16.png"))); // NOI18N
+        registroA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/icons8-añadir-16.png"))); // NOI18N
         registroA.setText("Registrar");
         registroA.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -866,7 +866,7 @@ public class MiBiblioteca extends javax.swing.JFrame {
         });
 
         actualizarInf.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        actualizarInf.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Biblioteca/icons8-actualizar-16.png"))); // NOI18N
+        actualizarInf.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/icons8-actualizar-16.png"))); // NOI18N
         actualizarInf.setText("Actualizar");
         actualizarInf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -875,7 +875,7 @@ public class MiBiblioteca extends javax.swing.JFrame {
         });
 
         EliminarInfo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        EliminarInfo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Biblioteca/icons8-menos-16.png"))); // NOI18N
+        EliminarInfo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/icons8-menos-16.png"))); // NOI18N
         EliminarInfo.setText("Eliminar");
         EliminarInfo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -884,7 +884,7 @@ public class MiBiblioteca extends javax.swing.JFrame {
         });
 
         cancelar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        cancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Biblioteca/cancel.png"))); // NOI18N
+        cancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/cancel.png"))); // NOI18N
         cancelar.setText("Cancelar");
         cancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

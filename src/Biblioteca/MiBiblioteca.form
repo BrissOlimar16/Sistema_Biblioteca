@@ -365,7 +365,7 @@
               <Font name="Segoe UI" size="14" style="1"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/Biblioteca/icons8-papelera-llena-16.png"/>
+              <Image iconType="3" name="/iconos/icons8-papelera-llena-16.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Eliminar"/>
             <Property name="enabled" type="boolean" value="false"/>
@@ -934,7 +934,7 @@
                 <MenuItem class="javax.swing.JMenuItem" name="eliminarAlumno">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/Biblioteca/icons8-menos-16.png"/>
+                      <Image iconType="3" name="/iconos/icons8-menos-16.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Eliminar registro de alumno"/>
                   </Properties>
@@ -1067,7 +1067,7 @@
               <Font name="Segoe UI" size="14" style="0"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/Biblioteca/icons8-a&#xf1;adir-16.png"/>
+              <Image iconType="3" name="/iconos/icons8-a&#xf1;adir-16.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Registrar"/>
           </Properties>
@@ -1081,7 +1081,7 @@
               <Font name="Segoe UI" size="14" style="0"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/Biblioteca/icons8-actualizar-16.png"/>
+              <Image iconType="3" name="/iconos/icons8-actualizar-16.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Actualizar"/>
           </Properties>
@@ -1095,7 +1095,7 @@
               <Font name="Segoe UI" size="14" style="0"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/Biblioteca/icons8-menos-16.png"/>
+              <Image iconType="3" name="/iconos/icons8-menos-16.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Eliminar"/>
           </Properties>
@@ -1109,7 +1109,7 @@
               <Font name="Segoe UI" size="14" style="0"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/Biblioteca/cancel.png"/>
+              <Image iconType="3" name="/iconos/cancel.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Cancelar"/>
           </Properties>
