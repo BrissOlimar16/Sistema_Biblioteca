@@ -18,6 +18,7 @@ public class MiBiblioteca extends javax.swing.JFrame {
     static DefaultTableModel ta = new DefaultTableModel();
     ArrayList<IngresarL> listaElementos = new ArrayList<>();
     ArrayList<IngresarA> listaAlumnos = new ArrayList<>();
+    int indice=-1;
     public String tipo, z;
     public int xy,w;
     public MiBiblioteca() {
@@ -42,10 +43,9 @@ public class MiBiblioteca extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         txtEditorial = new javax.swing.JTextField();
-        fecha = new com.toedter.calendar.JDateChooser();
-        ((javax.swing.JTextField)fecha.getDateEditor().getUiComponent()).setEditable(false);
         GuardarRegistro = new javax.swing.JButton();
         CancelarRegistro = new javax.swing.JButton();
+        txtfecha = new com.toedter.calendar.JDateChooser();
         Prestamos = new javax.swing.JDialog();
         btnBuscarPedido = new javax.swing.JButton();
         txtBuscarPedido = new javax.swing.JTextField();
@@ -86,24 +86,26 @@ public class MiBiblioteca extends javax.swing.JFrame {
         txt5 = new javax.swing.JTextField();
         txt6 = new javax.swing.JTextField();
         btnGuardado = new javax.swing.JButton();
-        txtfecha = new com.toedter.calendar.JDateChooser();
         LaBiblioteca = new javax.swing.JDialog();
         jScrollPane4 = new javax.swing.JScrollPane();
         tablaBiblioteca = new javax.swing.JTable();
         jLabel22 = new javax.swing.JLabel();
         Alumnos = new javax.swing.JDialog();
-        RegistroAlumno = new javax.swing.JPanel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel23 = new javax.swing.JLabel();
-        NombreAlumno = new javax.swing.JTextField();
-        MatriculaAlumno = new javax.swing.JTextField();
-        GuardarAlumno = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         IngresarAlumnos = new javax.swing.JMenu();
         darAlta = new javax.swing.JMenuItem();
         actualizarInfo = new javax.swing.JMenuItem();
         eliminarAlumno = new javax.swing.JMenuItem();
+        RegistroAlumno = new javax.swing.JDialog();
+        tituloRegistro = new javax.swing.JLabel();
+        NombreAlumno = new javax.swing.JLabel();
+        Matricula = new javax.swing.JLabel();
+        nombre = new javax.swing.JTextField();
+        MatriculaAlumno = new javax.swing.JTextField();
+        registroA = new javax.swing.JButton();
+        actualizarInf = new javax.swing.JButton();
+        EliminarInfo = new javax.swing.JButton();
+        cancelar = new javax.swing.JButton();
         login = new FondoPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -144,9 +146,6 @@ public class MiBiblioteca extends javax.swing.JFrame {
 
         jLabel8.setText("Editorial y/o ISBN");
 
-        fecha.setMaxSelectableDate(new java.util.Date(1751266910000L));
-        fecha.setMinSelectableDate(new java.util.Date(-2208961294000L));
-
         GuardarRegistro.setText("Guardar");
         GuardarRegistro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -186,9 +185,9 @@ public class MiBiblioteca extends javax.swing.JFrame {
                             .addComponent(jLabel8)
                             .addComponent(jLabel7))
                         .addGap(55, 55, 55)
-                        .addGroup(RegistrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtEditorial, javax.swing.GroupLayout.PREFERRED_SIZE, 326, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(RegistrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtEditorial, javax.swing.GroupLayout.DEFAULT_SIZE, 326, Short.MAX_VALUE)
+                            .addComponent(txtfecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(203, 203, 203))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, RegistrosLayout.createSequentialGroup()
                 .addComponent(GuardarRegistro)
@@ -209,10 +208,10 @@ public class MiBiblioteca extends javax.swing.JFrame {
                 .addGroup(RegistrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtAutor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
-                .addGap(18, 18, 18)
+                .addGap(12, 12, 12)
                 .addGroup(RegistrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(fecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7))
+                    .addComponent(jLabel7)
+                    .addComponent(txtfecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(21, 21, 21)
                 .addGroup(RegistrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
@@ -559,14 +558,13 @@ public class MiBiblioteca extends javax.swing.JFrame {
                             .addComponent(txt6, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ActualizandoLayout.createSequentialGroup()
                                 .addComponent(txt4)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtfecha, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))))
                     .addGroup(ActualizandoLayout.createSequentialGroup()
                         .addGap(115, 115, 115)
                         .addGroup(ActualizandoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel15)
                             .addComponent(btnGuardado, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(77, Short.MAX_VALUE))
+                .addContainerGap(0, Short.MAX_VALUE))
         );
         ActualizandoLayout.setVerticalGroup(
             ActualizandoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -574,24 +572,21 @@ public class MiBiblioteca extends javax.swing.JFrame {
                 .addGap(27, 27, 27)
                 .addComponent(jLabel15)
                 .addGap(18, 18, 18)
-                .addGroup(ActualizandoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(ActualizandoLayout.createSequentialGroup()
-                        .addGroup(ActualizandoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel16)
-                            .addComponent(txt1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(ActualizandoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel17)
-                            .addComponent(txt2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(ActualizandoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel18)
-                            .addComponent(txt3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(ActualizandoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel19)
-                            .addComponent(txt4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(txtfecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(ActualizandoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel16)
+                    .addComponent(txt1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(ActualizandoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel17)
+                    .addComponent(txt2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(ActualizandoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel18)
+                    .addComponent(txt3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(ActualizandoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel19)
+                    .addComponent(txt4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(ActualizandoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel20)
@@ -604,6 +599,8 @@ public class MiBiblioteca extends javax.swing.JFrame {
                 .addComponent(btnGuardado)
                 .addContainerGap(145, Short.MAX_VALUE))
         );
+
+        LaBiblioteca.setTitle("Libreria");
 
         tablaBiblioteca.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -657,67 +654,7 @@ public class MiBiblioteca extends javax.swing.JFrame {
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 413, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jLabel11.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
-        jLabel11.setText("Registrar Nuevo Alumno ");
-
-        jLabel12.setText("Nombre del Alumno:");
-
-        jLabel23.setText("Matricula del Alumno");
-
-        NombreAlumno.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                NombreAlumnoActionPerformed(evt);
-            }
-        });
-
-        GuardarAlumno.setText("Registrar");
-        GuardarAlumno.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                GuardarAlumnoActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout RegistroAlumnoLayout = new javax.swing.GroupLayout(RegistroAlumno);
-        RegistroAlumno.setLayout(RegistroAlumnoLayout);
-        RegistroAlumnoLayout.setHorizontalGroup(
-            RegistroAlumnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(RegistroAlumnoLayout.createSequentialGroup()
-                .addGap(49, 49, 49)
-                .addGroup(RegistroAlumnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel12)
-                    .addComponent(jLabel23))
-                .addGap(41, 41, 41)
-                .addGroup(RegistroAlumnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(MatriculaAlumno)
-                    .addComponent(NombreAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(58, 58, 58))
-            .addGroup(RegistroAlumnoLayout.createSequentialGroup()
-                .addGroup(RegistroAlumnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(RegistroAlumnoLayout.createSequentialGroup()
-                        .addGap(124, 124, 124)
-                        .addComponent(jLabel11))
-                    .addGroup(RegistroAlumnoLayout.createSequentialGroup()
-                        .addGap(188, 188, 188)
-                        .addComponent(GuardarAlumno)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        RegistroAlumnoLayout.setVerticalGroup(
-            RegistroAlumnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(RegistroAlumnoLayout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addComponent(jLabel11)
-                .addGap(48, 48, 48)
-                .addGroup(RegistroAlumnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel12)
-                    .addComponent(NombreAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(43, 43, 43)
-                .addGroup(RegistroAlumnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel23)
-                    .addComponent(MatriculaAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(58, 58, 58)
-                .addComponent(GuardarAlumno)
-                .addContainerGap(70, Short.MAX_VALUE))
-        );
+        Alumnos.setTitle("Registro de alumnos");
 
         IngresarAlumnos.setText("Registrar Alumnos");
 
@@ -738,6 +675,11 @@ public class MiBiblioteca extends javax.swing.JFrame {
         IngresarAlumnos.add(actualizarInfo);
 
         eliminarAlumno.setText("Eliminar registro de alumno");
+        eliminarAlumno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eliminarAlumnoActionPerformed(evt);
+            }
+        });
         IngresarAlumnos.add(eliminarAlumno);
 
         jMenuBar1.add(IngresarAlumnos);
@@ -748,20 +690,114 @@ public class MiBiblioteca extends javax.swing.JFrame {
         Alumnos.getContentPane().setLayout(AlumnosLayout);
         AlumnosLayout.setHorizontalGroup(
             AlumnosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(AlumnosLayout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(RegistroAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, 472, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(292, Short.MAX_VALUE))
+            .addGap(0, 787, Short.MAX_VALUE)
         );
         AlumnosLayout.setVerticalGroup(
             AlumnosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(AlumnosLayout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(RegistroAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(128, Short.MAX_VALUE))
+            .addGap(0, 489, Short.MAX_VALUE)
+        );
+
+        RegistroAlumno.setTitle("Alumnos");
+
+        tituloRegistro.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
+
+        NombreAlumno.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        NombreAlumno.setText("Nombre del alumno:");
+
+        Matricula.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        Matricula.setText("Matricula del alumno:");
+
+        nombre.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+
+        MatriculaAlumno.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        MatriculaAlumno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MatriculaAlumnoActionPerformed(evt);
+            }
+        });
+
+        registroA.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        registroA.setText("Registrar");
+        registroA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                registroAActionPerformed(evt);
+            }
+        });
+
+        actualizarInf.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        actualizarInf.setText("Actualizar");
+        actualizarInf.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actualizarInfActionPerformed(evt);
+            }
+        });
+
+        EliminarInfo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        EliminarInfo.setText("Eliminar");
+        EliminarInfo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EliminarInfoActionPerformed(evt);
+            }
+        });
+
+        cancelar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cancelar.setText("Cancelar");
+
+        javax.swing.GroupLayout RegistroAlumnoLayout = new javax.swing.GroupLayout(RegistroAlumno.getContentPane());
+        RegistroAlumno.getContentPane().setLayout(RegistroAlumnoLayout);
+        RegistroAlumnoLayout.setHorizontalGroup(
+            RegistroAlumnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, RegistroAlumnoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(RegistroAlumnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(tituloRegistro, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, RegistroAlumnoLayout.createSequentialGroup()
+                        .addComponent(Matricula)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(MatriculaAlumno))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, RegistroAlumnoLayout.createSequentialGroup()
+                        .addComponent(NombreAlumno)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(112, 112, 112))
+            .addGroup(RegistroAlumnoLayout.createSequentialGroup()
+                .addGap(205, 205, 205)
+                .addGroup(RegistroAlumnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(EliminarInfo)
+                    .addComponent(registroA)
+                    .addComponent(actualizarInf))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, RegistroAlumnoLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(cancelar)
+                .addGap(95, 95, 95))
+        );
+        RegistroAlumnoLayout.setVerticalGroup(
+            RegistroAlumnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(RegistroAlumnoLayout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(tituloRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(38, 38, 38)
+                .addGroup(RegistroAlumnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(NombreAlumno)
+                    .addComponent(nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(82, 82, 82)
+                .addGroup(RegistroAlumnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Matricula)
+                    .addComponent(MatriculaAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(43, 43, 43)
+                .addComponent(registroA)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(actualizarInf)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(EliminarInfo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addComponent(cancelar)
+                .addContainerGap())
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Gestor De Biblioteca");
         setResizable(false);
         getContentPane().setLayout(null);
 
@@ -1040,11 +1076,11 @@ public class MiBiblioteca extends javax.swing.JFrame {
         if(tipo.equals("Tesis"))
             txtEditorial.setText("- - -");
         if(txtTitulo.getText().trim().isEmpty() || txtAutor.getText().trim().isEmpty()
-                || fecha.getDate() == null || txtEditorial.getText().trim().isEmpty()){
+                || txtfecha.getDate() == null || txtEditorial.getText().trim().isEmpty()){
             JOptionPane.showMessageDialog(Registros, "Hay un campo vacío");
         } 
         else{
-            Date s= fecha.getDate();
+            Date s= txtfecha.getDate();
             SimpleDateFormat form = new SimpleDateFormat("dd MMMM yyyy");
             String f=form.format(s).toUpperCase();
             z="Esta disponible";
@@ -1052,7 +1088,7 @@ public class MiBiblioteca extends javax.swing.JFrame {
             listaElementos.add(p);
             txtTitulo.setText("");
             txtAutor.setText("");
-            fecha.setDate(null);
+            txtfecha.setDate(null);
             txtEditorial.setText("");
             JOptionPane.showMessageDialog(Registros,"Elemento agregado..");
         }
@@ -1144,8 +1180,6 @@ public class MiBiblioteca extends javax.swing.JFrame {
     private void btnIngresarUsuario1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarUsuario1ActionPerformed
         Alumnos.setSize(this.getSize());
         Alumnos.setVisible(true);
-        RegistroAlumno.setVisible(false);
-        
     }//GEN-LAST:event_btnIngresarUsuario1ActionPerformed
 
     private void btnEliminarElementoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarElementoActionPerformed
@@ -1212,30 +1246,97 @@ public class MiBiblioteca extends javax.swing.JFrame {
     }//GEN-LAST:event_tablaBibliotecaMouseClicked
 
     private void darAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_darAltaActionPerformed
+        RegistroAlumno.setBounds(0, 0, 500, 500);
+        RegistroAlumno.setLocationRelativeTo(null);
         RegistroAlumno.setVisible(true);
+        tituloRegistro.setText("Registrar Alumno");
+        actualizarInf.setVisible(false);
+        EliminarInfo.setVisible(false);
+        registroA.setVisible(true);
+        
     }//GEN-LAST:event_darAltaActionPerformed
 
     private void actualizarInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarInfoActionPerformed
-        // TODO add your handling code here:
+        indice = BuscarMatricula();
+        if(indice>-1){
+            RegistroAlumno.setBounds(0, 0, 500, 500);
+            RegistroAlumno.setLocationRelativeTo(null);
+            RegistroAlumno.setVisible(true);
+            tituloRegistro.setText("Actualizar información de alumno");
+            registroA.setVisible(false);
+            EliminarInfo.setVisible(false);
+            actualizarInf.setVisible(true);
+            IngresarA a = listaAlumnos.get(indice);
+            nombre.setText(a.getNombre());
+            MatriculaAlumno.setText(a.getMatricula());
+        }
+        else{
+            JOptionPane.showMessageDialog(Alumnos,"Datos incorrectos..");
+        }
     }//GEN-LAST:event_actualizarInfoActionPerformed
 
-    private void GuardarAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GuardarAlumnoActionPerformed
-         if(NombreAlumno.getText().trim().isEmpty() || MatriculaAlumno.getText().trim().isEmpty()){
+    private void MatriculaAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MatriculaAlumnoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_MatriculaAlumnoActionPerformed
+
+    private void registroAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registroAActionPerformed
+        if(nombre.getText().trim().isEmpty() || MatriculaAlumno.getText().trim().isEmpty()){
             JOptionPane.showMessageDialog(RegistroAlumno, "Hay un campo vacío");
         } 
         else{
-            IngresarA A=new IngresarA(NombreAlumno.getText(),MatriculaAlumno.getText());
+            IngresarA A=new IngresarA(nombre.getText(),MatriculaAlumno.getText());
             listaAlumnos.add(A);
-            NombreAlumno.setText("");
+            nombre.setText("");
             MatriculaAlumno.setText("");
-            JOptionPane.showMessageDialog(RegistroAlumno,"Alumno Registrado...");
-            RegistroAlumno.setVisible(false);
+            JOptionPane.showMessageDialog(RegistroAlumno,"Alumno registrado..");
         }
-    }//GEN-LAST:event_GuardarAlumnoActionPerformed
+    }//GEN-LAST:event_registroAActionPerformed
 
-    private void NombreAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NombreAlumnoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_NombreAlumnoActionPerformed
+    private void eliminarAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarAlumnoActionPerformed
+        indice=BuscarMatricula();
+        if(indice>-1){
+            RegistroAlumno.setBounds(0, 0, 500, 500);
+            RegistroAlumno.setLocationRelativeTo(null);
+            RegistroAlumno.setVisible(true);
+            tituloRegistro.setText("Eliminar información de alumno");
+            registroA.setVisible(false);
+            EliminarInfo.setVisible(true);
+            actualizarInf.setVisible(false);
+            IngresarA a = listaAlumnos.get(indice);
+            nombre.setText(a.getNombre());
+            MatriculaAlumno.setText(a.getMatricula());
+        }
+        else{
+            JOptionPane.showMessageDialog(Alumnos,"Datos incorrectos..");
+        }
+    }//GEN-LAST:event_eliminarAlumnoActionPerformed
+
+    private void actualizarInfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarInfActionPerformed
+        if(indice>-1 && nombre.getText()!=null || MatriculaAlumno.getText()!=null){
+            IngresarA alumno = listaAlumnos.get(indice);
+            alumno.setNombre(nombre.getText());
+            alumno.setMatricula(MatriculaAlumno.getText());
+            JOptionPane.showMessageDialog(RegistroAlumno,"Información actualizada..");
+            nombre.setText("");
+            MatriculaAlumno.setText("");
+            indice=-1;
+        }
+        else{
+            JOptionPane.showMessageDialog(RegistroAlumno,"Hay un campo vacio..");
+        }
+    }//GEN-LAST:event_actualizarInfActionPerformed
+
+    private void EliminarInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarInfoActionPerformed
+        if(indice>-1){
+            listaAlumnos.remove(indice);
+            JOptionPane.showMessageDialog(RegistroAlumno,"Información eliminada..");
+            nombre.setText("");
+            MatriculaAlumno.setText("");
+            indice=-1;
+        }
+    }//GEN-LAST:event_EliminarInfoActionPerformed
+    
+    
     public static void buscar(ArrayList<IngresarL> libro,JTable x) {
         for (IngresarL a : libro) {
             if ("Ocupado".equalsIgnoreCase(a.getEstado())) {
@@ -1319,6 +1420,19 @@ public class MiBiblioteca extends javax.swing.JFrame {
         tablaBiblioteca.setModel(ta); 
     }
     
+    public int BuscarMatricula(){
+        int indice=-1;
+        String matricula = JOptionPane.showInputDialog(Alumnos, "Ingrese la matricula del Alumno");
+        for(IngresarA alumno : listaAlumnos){
+            if(alumno.getMatricula().equals(matricula)){
+               indice= listaAlumnos.indexOf(alumno);
+            }
+        }
+        return indice;
+    }
+    
+    
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -1357,16 +1471,18 @@ public class MiBiblioteca extends javax.swing.JFrame {
     private javax.swing.JButton ActualizarElementos;
     private javax.swing.JDialog Alumnos;
     private javax.swing.JButton CancelarRegistro;
-    private javax.swing.JButton GuardarAlumno;
+    private javax.swing.JButton EliminarInfo;
     private javax.swing.JButton GuardarRegistro;
     private javax.swing.JMenu IngresarAlumnos;
     private javax.swing.JDialog LaBiblioteca;
+    private javax.swing.JLabel Matricula;
     private javax.swing.JTextField MatriculaAlumno;
-    private javax.swing.JTextField NombreAlumno;
+    private javax.swing.JLabel NombreAlumno;
     private javax.swing.JDialog Prestamos;
-    private javax.swing.JPanel RegistroAlumno;
+    private javax.swing.JDialog RegistroAlumno;
     private javax.swing.JDialog Registros;
     private javax.swing.JDialog Solicitante;
+    private javax.swing.JButton actualizarInf;
     private javax.swing.JMenuItem actualizarInfo;
     private javax.swing.JButton btnAceptarLibro;
     private javax.swing.JButton btnActualizar;
@@ -1383,17 +1499,15 @@ public class MiBiblioteca extends javax.swing.JFrame {
     private javax.swing.JButton btndevolucion;
     private javax.swing.JButton btningresar;
     private javax.swing.JButton btnsolicitar;
+    private javax.swing.JButton cancelar;
     private javax.swing.JMenuItem cerrars;
     private javax.swing.JDialog consulta;
     private javax.swing.JMenuItem darAlta;
     private javax.swing.JMenuItem eliminarAlumno;
     private javax.swing.JLabel etiqueta;
     private javax.swing.JLabel etiqueta2;
-    private com.toedter.calendar.JDateChooser fecha;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
@@ -1405,7 +1519,6 @@ public class MiBiblioteca extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
-    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -1431,10 +1544,13 @@ public class MiBiblioteca extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuRevista;
     private javax.swing.JMenuItem menuSolicitar;
     private javax.swing.JMenuItem menuTesis;
+    private javax.swing.JTextField nombre;
     private javax.swing.JPasswordField pass;
+    private javax.swing.JButton registroA;
     private javax.swing.JTable tablaActualiza;
     private javax.swing.JTable tablaBiblioteca;
     private javax.swing.JTable tablaElementos;
+    private javax.swing.JLabel tituloRegistro;
     private javax.swing.JTextField txt1;
     private javax.swing.JTextField txt2;
     private javax.swing.JTextField txt3;
