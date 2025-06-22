@@ -35,8 +35,8 @@
                               <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="55" pref="55" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="txtEditorial" pref="326" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="txtEditorial" max="32767" attributes="0"/>
                               <Component id="txtfecha" max="32767" attributes="0"/>
                           </Group>
                       </Group>
@@ -67,11 +67,11 @@
                       <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="1" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
                       <Component id="txtfecha" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="txtEditorial" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -610,7 +610,7 @@
                           </Group>
                       </Group>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace pref="27" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -1077,6 +1077,9 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="cerrars">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/iconos/disconnect.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Cerrar sesi&#xf3;n"/>
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
@@ -1093,6 +1096,9 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="menuLibro">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/iconos/icons8-libro-16.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Libros"/>
               </Properties>
               <Events>
@@ -1101,6 +1107,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="menuRevista">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/iconos/icons8-revista-16.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Revistas"/>
               </Properties>
               <Events>
@@ -1109,6 +1118,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="menuTesis">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/iconos/icons8-tesis-externa-universidad-flaticons-planos-iconos-planos-2-16.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Tesis"/>
               </Properties>
               <Events>
@@ -1124,6 +1136,9 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="menuSolicitar">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/iconos/icons8-libreta-de-ahorros-16.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Elementos Prestados"/>
               </Properties>
               <Events>
@@ -1139,6 +1154,9 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem5">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/iconos/icons8-reporte-de-negocios-16.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Corte"/>
               </Properties>
               <Events>
@@ -1311,6 +1329,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="btningresar">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/iconos/accept.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Ingresar"/>
           </Properties>
           <Events>
@@ -1319,6 +1340,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="btncancelar">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/iconos/cancel.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Cancelar"/>
           </Properties>
           <Events>
@@ -1329,6 +1353,9 @@
     </Container>
     <Component class="javax.swing.JButton" name="btnsolicitar">
       <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/iconos/icons8-reference-80.png"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Solicitar"/>
       </Properties>
       <Events>
@@ -1374,6 +1401,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnBuscar">
       <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/iconos/icons8-libros-emoji-80.png"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Mostrar Biblioteca"/>
       </Properties>
       <Events>
@@ -1403,6 +1433,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnEliminarElemento">
       <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/iconos/icons8-eliminar-libro-80.png"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Eliminar"/>
       </Properties>
       <Events>
@@ -1416,6 +1449,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="btndevolucion">
       <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/iconos/icons8-devolver-libro-80.png"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Devoluci&#xf3;n"/>
       </Properties>
       <Events>

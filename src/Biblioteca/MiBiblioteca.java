@@ -232,8 +232,8 @@ public class MiBiblioteca extends javax.swing.JFrame {
                             .addComponent(jLabel8)
                             .addComponent(jLabel7))
                         .addGap(55, 55, 55)
-                        .addGroup(RegistrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtEditorial, javax.swing.GroupLayout.DEFAULT_SIZE, 326, Short.MAX_VALUE)
+                        .addGroup(RegistrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtEditorial)
                             .addComponent(txtfecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(203, 203, 203))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, RegistrosLayout.createSequentialGroup()
@@ -256,10 +256,10 @@ public class MiBiblioteca extends javax.swing.JFrame {
                     .addComponent(txtAutor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
                 .addGap(12, 12, 12)
-                .addGroup(RegistrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(RegistrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel7)
                     .addComponent(txtfecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(21, 21, 21)
+                .addGap(15, 15, 15)
                 .addGroup(RegistrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(txtEditorial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -654,7 +654,7 @@ public class MiBiblioteca extends javax.swing.JFrame {
                         .addGroup(ActualizandoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel15)
                             .addComponent(btnGuardado, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
         ActualizandoLayout.setVerticalGroup(
             ActualizandoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -952,6 +952,7 @@ public class MiBiblioteca extends javax.swing.JFrame {
 
         usuarios.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Alumno", "Administrador" }));
 
+        btningresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/accept.png"))); // NOI18N
         btningresar.setText("Ingresar");
         btningresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -959,6 +960,7 @@ public class MiBiblioteca extends javax.swing.JFrame {
             }
         });
 
+        btncancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/cancel.png"))); // NOI18N
         btncancelar.setText("Cancelar");
         btncancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1016,6 +1018,7 @@ public class MiBiblioteca extends javax.swing.JFrame {
         getContentPane().add(login);
         login.setBounds(290, 130, 452, 333);
 
+        btnsolicitar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/icons8-reference-80.png"))); // NOI18N
         btnsolicitar.setText("Solicitar");
         btnsolicitar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1045,6 +1048,7 @@ public class MiBiblioteca extends javax.swing.JFrame {
         getContentPane().add(ActualizarElementos);
         ActualizarElementos.setBounds(30, 40, 220, 73);
 
+        btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/icons8-libros-emoji-80.png"))); // NOI18N
         btnBuscar.setText("Mostrar Biblioteca");
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1064,6 +1068,7 @@ public class MiBiblioteca extends javax.swing.JFrame {
         getContentPane().add(btnIngresarUsuario1);
         btnIngresarUsuario1.setBounds(30, 330, 220, 81);
 
+        btnEliminarElemento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/icons8-eliminar-libro-80.png"))); // NOI18N
         btnEliminarElemento.setText("Eliminar");
         btnEliminarElemento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1073,6 +1078,7 @@ public class MiBiblioteca extends javax.swing.JFrame {
         getContentPane().add(btnEliminarElemento);
         btnEliminarElemento.setBounds(30, 190, 220, 73);
 
+        btndevolucion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/icons8-devolver-libro-80.png"))); // NOI18N
         btndevolucion.setText("Devolución");
         btndevolucion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1084,6 +1090,7 @@ public class MiBiblioteca extends javax.swing.JFrame {
 
         jMenu2.setText("Inicio");
 
+        cerrars.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/disconnect.png"))); // NOI18N
         cerrars.setText("Cerrar sesión");
         cerrars.setEnabled(false);
         cerrars.addActionListener(new java.awt.event.ActionListener() {
@@ -1097,6 +1104,7 @@ public class MiBiblioteca extends javax.swing.JFrame {
 
         jMenu3.setText("Registro");
 
+        menuLibro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/icons8-libro-16.png"))); // NOI18N
         menuLibro.setText("Libros");
         menuLibro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1105,6 +1113,7 @@ public class MiBiblioteca extends javax.swing.JFrame {
         });
         jMenu3.add(menuLibro);
 
+        menuRevista.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/icons8-revista-16.png"))); // NOI18N
         menuRevista.setText("Revistas");
         menuRevista.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1113,6 +1122,7 @@ public class MiBiblioteca extends javax.swing.JFrame {
         });
         jMenu3.add(menuRevista);
 
+        menuTesis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/icons8-tesis-externa-universidad-flaticons-planos-iconos-planos-2-16.png"))); // NOI18N
         menuTesis.setText("Tesis");
         menuTesis.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1125,6 +1135,7 @@ public class MiBiblioteca extends javax.swing.JFrame {
 
         jMenu4.setText("Prestamos");
 
+        menuSolicitar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/icons8-libreta-de-ahorros-16.png"))); // NOI18N
         menuSolicitar.setText("Elementos Prestados");
         menuSolicitar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1137,6 +1148,7 @@ public class MiBiblioteca extends javax.swing.JFrame {
 
         jMenu1.setText("Reportes");
 
+        jMenuItem5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/icons8-reporte-de-negocios-16.png"))); // NOI18N
         jMenuItem5.setText("Corte");
         jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
