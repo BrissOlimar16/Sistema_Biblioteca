@@ -2,6 +2,8 @@ package Biblioteca;
 
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -21,6 +23,7 @@ public class MiBiblioteca extends javax.swing.JFrame {
     int indice=-1;
     public String tipo, z,mat;
     public int xy,w;
+    
     public MiBiblioteca() {
         this.setContentPane(fondo);
         initComponents();
@@ -28,6 +31,32 @@ public class MiBiblioteca extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         t = (DefaultTableModel)tablaElementos.getModel();
         ta = (DefaultTableModel)tablaBiblioteca.getModel();
+        MatriculaAlumno.addKeyListener(new KeyAdapter() {
+        @Override
+        public void keyTyped(KeyEvent e) {
+            char caracter = e.getKeyChar();
+             if (tamaño(MatriculaAlumno.getText()) >= 10) {
+                JOptionPane.showMessageDialog(RegistroAlumno, "No puede introducir más de 10 dígitos");
+                e.consume();
+                return;
+            }
+            if(((caracter < '0') ||(caracter > '9')) &&(caracter != '\b'))
+                    e.consume();
+        }
+        });
+        txtMatricula.addKeyListener(new KeyAdapter() {
+        @Override
+        public void keyTyped(KeyEvent e) {
+            char caracter = e.getKeyChar();
+             if (tamaño(txtMatricula.getText()) >= 10) {
+                JOptionPane.showMessageDialog(RegistroAlumno, "No puede introducir más de 10 dígitos");
+                e.consume();
+                return;
+            }
+            if(((caracter < '0') ||(caracter > '9')) &&(caracter != '\b'))
+                    e.consume();
+        }
+        });
     }
     
     @SuppressWarnings("unchecked")
@@ -140,7 +169,19 @@ public class MiBiblioteca extends javax.swing.JFrame {
 
         jLabel5.setText("Título del elemento:");
 
+        txtTitulo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtTituloKeyTyped(evt);
+            }
+        });
+
         jLabel6.setText("Autor del elemento:");
+
+        txtAutor.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtAutorKeyTyped(evt);
+            }
+        });
 
         jLabel7.setText("Fecha de Publicación:");
 
@@ -235,6 +276,11 @@ public class MiBiblioteca extends javax.swing.JFrame {
         txtBuscarPedido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtBuscarPedidoActionPerformed(evt);
+            }
+        });
+        txtBuscarPedido.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtBuscarPedidoKeyTyped(evt);
             }
         });
 
@@ -381,6 +427,12 @@ public class MiBiblioteca extends javax.swing.JFrame {
 
         jLabel13.setText("Matricula:");
 
+        txtMatricula.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtMatriculaActionPerformed(evt);
+            }
+        });
+
         txtinformacion_prestamo.setEditable(false);
         txtinformacion_prestamo.setColumns(20);
         txtinformacion_prestamo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -526,6 +578,24 @@ public class MiBiblioteca extends javax.swing.JFrame {
         jLabel21.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel21.setText("Estado:");
 
+        txt1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt1KeyTyped(evt);
+            }
+        });
+
+        txt2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt2KeyTyped(evt);
+            }
+        });
+
+        txt3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt3KeyTyped(evt);
+            }
+        });
+
         btnGuardado.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnGuardado.setText("Guardar");
         btnGuardado.addActionListener(new java.awt.event.ActionListener() {
@@ -556,15 +626,13 @@ public class MiBiblioteca extends javax.swing.JFrame {
                             .addComponent(txt1, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txt5, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txt6, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ActualizandoLayout.createSequentialGroup()
-                                .addComponent(txt4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))))
+                            .addComponent(txt4, javax.swing.GroupLayout.Alignment.TRAILING)))
                     .addGroup(ActualizandoLayout.createSequentialGroup()
                         .addGap(115, 115, 115)
                         .addGroup(ActualizandoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel15)
                             .addComponent(btnGuardado, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(0, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         ActualizandoLayout.setVerticalGroup(
             ActualizandoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -708,6 +776,11 @@ public class MiBiblioteca extends javax.swing.JFrame {
         Matricula.setText("Matricula del alumno:");
 
         nombre.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        nombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                nombreKeyTyped(evt);
+            }
+        });
 
         MatriculaAlumno.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         MatriculaAlumno.addActionListener(new java.awt.event.ActionListener() {
@@ -742,6 +815,11 @@ public class MiBiblioteca extends javax.swing.JFrame {
 
         cancelar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cancelar.setText("Cancelar");
+        cancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout RegistroAlumnoLayout = new javax.swing.GroupLayout(RegistroAlumno.getContentPane());
         RegistroAlumno.getContentPane().setLayout(RegistroAlumnoLayout);
@@ -1303,10 +1381,22 @@ public class MiBiblioteca extends javax.swing.JFrame {
     }//GEN-LAST:event_MatriculaAlumnoActionPerformed
 
     private void registroAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registroAActionPerformed
+        boolean n=false;
         if(nombre.getText().trim().isEmpty() || MatriculaAlumno.getText().trim().isEmpty()){
             JOptionPane.showMessageDialog(RegistroAlumno, "Hay un campo vacío");
         } 
         else{
+            for(IngresarA alumno: listaAlumnos){
+                if(alumno.getMatricula().equals(MatriculaAlumno.getText())){
+                    JOptionPane.showMessageDialog(RegistroAlumno,"Ya existe la matricula");
+                    nombre.setText("");
+                    MatriculaAlumno.setText("");
+                    n=true;
+                    break;
+                }
+            }
+        }
+        if(!n){
             IngresarA A=new IngresarA(nombre.getText(),MatriculaAlumno.getText());
             listaAlumnos.add(A);
             nombre.setText("");
@@ -1360,6 +1450,62 @@ public class MiBiblioteca extends javax.swing.JFrame {
             indice=-1;
         }
     }//GEN-LAST:event_EliminarInfoActionPerformed
+
+    private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed
+        nombre.setText("");
+        MatriculaAlumno.setText("");
+        RegistroAlumno.dispose();
+    }//GEN-LAST:event_cancelarActionPerformed
+
+    private void nombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nombreKeyTyped
+        char d= evt.getKeyChar();
+        if(!Character.isLetter(d) && d!=' '){
+            evt.consume();
+        }
+    }//GEN-LAST:event_nombreKeyTyped
+
+    private void txtMatriculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMatriculaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtMatriculaActionPerformed
+
+    private void txtTituloKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTituloKeyTyped
+        char d= evt.getKeyChar();
+        if(!Character.isLetter(d) && d!=' '){
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtTituloKeyTyped
+
+    private void txtAutorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAutorKeyTyped
+        char d= evt.getKeyChar();
+        if(!Character.isLetter(d) && d!=' '){
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtAutorKeyTyped
+
+    private void txtBuscarPedidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarPedidoKeyTyped
+        char d= evt.getKeyChar();
+        if(!Character.isLetter(d) && d!=' '){
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtBuscarPedidoKeyTyped
+
+    private void txt1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt1KeyTyped
+        char d= evt.getKeyChar();
+        if(!Character.isLetter(d) && d!=' '){
+            evt.consume();
+        }
+    }//GEN-LAST:event_txt1KeyTyped
+
+    private void txt2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt2KeyTyped
+
+    }//GEN-LAST:event_txt2KeyTyped
+
+    private void txt3KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt3KeyTyped
+        char d= evt.getKeyChar();
+        if(!Character.isLetter(d) && d!=' '){
+            evt.consume();
+        }
+    }//GEN-LAST:event_txt3KeyTyped
     
     
     public static void buscar(ArrayList<IngresarL> libro,JTable x) {
@@ -1456,6 +1602,17 @@ public class MiBiblioteca extends javax.swing.JFrame {
         return indice;
     }
     
+    public int tamaño(String n) {
+        String expresion = n;
+        int cont = 0;
+        for (int i = 0; i < expresion.length(); i++) {
+            char c = expresion.charAt(i);
+            if (Character.isDigit(c)) {
+                cont++;
+            }
+        }
+        return cont;
+    }
     
     
     public static void main(String args[]) {
