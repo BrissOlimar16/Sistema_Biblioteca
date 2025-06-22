@@ -193,6 +193,7 @@ public class MiBiblioteca extends javax.swing.JFrame {
 
         jLabel8.setText("Editorial y/o ISBN");
 
+        GuardarRegistro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/accept.png"))); // NOI18N
         GuardarRegistro.setText("Guardar");
         GuardarRegistro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -200,6 +201,7 @@ public class MiBiblioteca extends javax.swing.JFrame {
             }
         });
 
+        CancelarRegistro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/cancel.png"))); // NOI18N
         CancelarRegistro.setText("Cancelar");
         CancelarRegistro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -272,6 +274,7 @@ public class MiBiblioteca extends javax.swing.JFrame {
 
         Prestamos.setTitle("Solicitar Elemento");
 
+        btnBuscarPedido.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/zoom_1.png"))); // NOI18N
         btnBuscarPedido.setText("Buscar");
         btnBuscarPedido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -298,6 +301,7 @@ public class MiBiblioteca extends javax.swing.JFrame {
 
         letrero.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
 
+        btnSolicitar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/icons8-libro-y-lápiz-16.png"))); // NOI18N
         btnSolicitar.setText("Solicitar");
         btnSolicitar.setEnabled(false);
         btnSolicitar.addActionListener(new java.awt.event.ActionListener() {
@@ -306,6 +310,7 @@ public class MiBiblioteca extends javax.swing.JFrame {
             }
         });
 
+        btncan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/cancel.png"))); // NOI18N
         btncan.setText("Cancelar");
         btncan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -390,6 +395,7 @@ public class MiBiblioteca extends javax.swing.JFrame {
         jScrollPane2.setViewportView(tablaElementos);
 
         btnEliminar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Biblioteca/icons8-papelera-llena-16.png"))); // NOI18N
         btnEliminar.setText("Eliminar");
         btnEliminar.setEnabled(false);
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
@@ -447,6 +453,7 @@ public class MiBiblioteca extends javax.swing.JFrame {
         jScrollPane1.setViewportView(txtinformacion_prestamo);
 
         btnAceptarLibro.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnAceptarLibro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/accept.png"))); // NOI18N
         btnAceptarLibro.setText("Aceptar");
         btnAceptarLibro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -455,6 +462,7 @@ public class MiBiblioteca extends javax.swing.JFrame {
         });
 
         btndevolver.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btndevolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/icons8-devolver-libro-16.png"))); // NOI18N
         btndevolver.setText("Devolver");
         btndevolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -481,9 +489,9 @@ public class MiBiblioteca extends javax.swing.JFrame {
                         .addComponent(etiqueta2))
                     .addGroup(SolicitanteLayout.createSequentialGroup()
                         .addGap(177, 177, 177)
-                        .addGroup(SolicitanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btndevolver, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnAceptarLibro, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(SolicitanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btndevolver, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnAceptarLibro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(105, Short.MAX_VALUE))
         );
         SolicitanteLayout.setVerticalGroup(
@@ -537,6 +545,7 @@ public class MiBiblioteca extends javax.swing.JFrame {
         jScrollPane3.setViewportView(tablaActualiza);
 
         btnActualizar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnActualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/icons8-actualizar-16.png"))); // NOI18N
         btnActualizar.setText("Actualizar");
         btnActualizar.setEnabled(false);
         btnActualizar.addActionListener(new java.awt.event.ActionListener() {
@@ -559,7 +568,7 @@ public class MiBiblioteca extends javax.swing.JFrame {
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 813, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(ActualizarEleLayout.createSequentialGroup()
                         .addGap(300, 300, 300)
-                        .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnActualizar)))
                 .addContainerGap(157, Short.MAX_VALUE))
         );
         ActualizarEleLayout.setVerticalGroup(
@@ -619,6 +628,7 @@ public class MiBiblioteca extends javax.swing.JFrame {
         txt6.setEditable(false);
 
         btnGuardado.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnGuardado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/accept.png"))); // NOI18N
         btnGuardado.setText("Guardar");
         btnGuardado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -774,6 +784,7 @@ public class MiBiblioteca extends javax.swing.JFrame {
 
         IngresarAlumnos.setText("Registrar Alumnos");
 
+        darAlta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/icons8-añadir-16.png"))); // NOI18N
         darAlta.setText("Ingrasar nuevo alumno");
         darAlta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -782,6 +793,7 @@ public class MiBiblioteca extends javax.swing.JFrame {
         });
         IngresarAlumnos.add(darAlta);
 
+        actualizarInfo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/icons8-actualizar-16.png"))); // NOI18N
         actualizarInfo.setText("Actualizar información del alumno");
         actualizarInfo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -790,6 +802,7 @@ public class MiBiblioteca extends javax.swing.JFrame {
         });
         IngresarAlumnos.add(actualizarInfo);
 
+        eliminarAlumno.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Biblioteca/icons8-menos-16.png"))); // NOI18N
         eliminarAlumno.setText("Eliminar registro de alumno");
         eliminarAlumno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -809,7 +822,7 @@ public class MiBiblioteca extends javax.swing.JFrame {
             .addGroup(AlumnosLayout.createSequentialGroup()
                 .addGap(82, 82, 82)
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 384, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(347, Short.MAX_VALUE))
+                .addContainerGap(323, Short.MAX_VALUE))
         );
         AlumnosLayout.setVerticalGroup(
             AlumnosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -844,6 +857,7 @@ public class MiBiblioteca extends javax.swing.JFrame {
         });
 
         registroA.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        registroA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Biblioteca/icons8-añadir-16.png"))); // NOI18N
         registroA.setText("Registrar");
         registroA.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -852,6 +866,7 @@ public class MiBiblioteca extends javax.swing.JFrame {
         });
 
         actualizarInf.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        actualizarInf.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Biblioteca/icons8-actualizar-16.png"))); // NOI18N
         actualizarInf.setText("Actualizar");
         actualizarInf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -860,6 +875,7 @@ public class MiBiblioteca extends javax.swing.JFrame {
         });
 
         EliminarInfo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        EliminarInfo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Biblioteca/icons8-menos-16.png"))); // NOI18N
         EliminarInfo.setText("Eliminar");
         EliminarInfo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -868,6 +884,7 @@ public class MiBiblioteca extends javax.swing.JFrame {
         });
 
         cancelar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Biblioteca/cancel.png"))); // NOI18N
         cancelar.setText("Cancelar");
         cancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -894,10 +911,10 @@ public class MiBiblioteca extends javax.swing.JFrame {
                 .addGap(112, 112, 112))
             .addGroup(RegistroAlumnoLayout.createSequentialGroup()
                 .addGap(205, 205, 205)
-                .addGroup(RegistroAlumnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(EliminarInfo)
-                    .addComponent(registroA)
-                    .addComponent(actualizarInf))
+                .addGroup(RegistroAlumnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(actualizarInf, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(registroA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(EliminarInfo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, RegistroAlumnoLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
