@@ -19,7 +19,7 @@ public class MiBiblioteca extends javax.swing.JFrame {
     ArrayList<IngresarL> listaElementos = new ArrayList<>();
     ArrayList<IngresarA> listaAlumnos = new ArrayList<>();
     int indice=-1;
-    public String tipo, z;
+    public String tipo, z,mat;
     public int xy,w;
     public MiBiblioteca() {
         this.setContentPane(fondo);
@@ -62,7 +62,7 @@ public class MiBiblioteca extends javax.swing.JFrame {
         Solicitante = new javax.swing.JDialog();
         etiqueta2 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        txtMatricula = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtinformacion_prestamo = new javax.swing.JTextArea();
         btnAceptarLibro = new javax.swing.JButton();
@@ -408,7 +408,7 @@ public class MiBiblioteca extends javax.swing.JFrame {
                             .addGroup(SolicitanteLayout.createSequentialGroup()
                                 .addComponent(jLabel13)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(txtMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(SolicitanteLayout.createSequentialGroup()
                         .addGap(180, 180, 180)
                         .addComponent(btnAceptarLibro, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -425,7 +425,7 @@ public class MiBiblioteca extends javax.swing.JFrame {
                 .addGap(37, 37, 37)
                 .addGroup(SolicitanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33)
@@ -1084,7 +1084,8 @@ public class MiBiblioteca extends javax.swing.JFrame {
             SimpleDateFormat form = new SimpleDateFormat("dd MMMM yyyy");
             String f=form.format(s).toUpperCase();
             z="Esta disponible";
-            IngresarL p=new IngresarL(tipo,txtTitulo.getText(),txtAutor.getText(),f,txtEditorial.getText(),z);
+            mat="- - -";
+            IngresarL p=new IngresarL(tipo,txtTitulo.getText(),txtAutor.getText(),f,txtEditorial.getText(),z,mat);
             listaElementos.add(p);
             txtTitulo.setText("");
             txtAutor.setText("");
@@ -1160,11 +1161,33 @@ public class MiBiblioteca extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     private void btnAceptarLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarLibroActionPerformed
-        IngresarL zx= listaElementos.get(w);
-        zx.setEstado("Ocupado");
+        IngresarL zx = listaElementos.get(w);
+        if (listaAlumnos.isEmpty()) {
+            Solicitante.setVisible(false);
+            Prestamos.setVisible(false);
+            JOptionPane.showMessageDialog(this, "No hay usuarios. No se presto el elemento");
+            btnIngresarUsuario1.doClick();
+            txtMatricula.setText("");
+        } else {
+            boolean alumnoEncontrado = false;
+            for (IngresarA alumno : listaAlumnos) {
+                if (alumno.getMatricula().equals(txtMatricula.getText())) {
+                    Solicitante.setVisible(false);
+                    JOptionPane.showMessageDialog(Prestamos,"Puede tomar el libro, hasta Pronto "+alumno.getNombre());
+                    zx.setMatri(txtMatricula.getText());
+                    zx.setEstado("Ocupado");
+                    alumnoEncontrado = true;
+                    break;
+                }
+            }
+            if (!alumnoEncontrado) {
+                JOptionPane.showMessageDialog(Prestamos, "No se encontró el usuario con la matrícula proporcionada.");
+                Solicitante.setVisible(false);
+            }
+        }
         mostrarTabla(tablaElementos);
+        txtMatricula.setText("");
         btnSolicitar.setEnabled(false);
-        Solicitante.setVisible(false);
     }//GEN-LAST:event_btnAceptarLibroActionPerformed
 
     private void tablaActualizaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaActualizaMouseClicked
@@ -1395,7 +1418,8 @@ public class MiBiblioteca extends javax.swing.JFrame {
                 a.getAutor(),
                 a.getFecha(),
                 a.getEditorial(),
-                a.getEstado()
+                a.getEstado(),
+                a.getMatri()
         };
          t.addRow(fila);
         }
@@ -1537,7 +1561,6 @@ public class MiBiblioteca extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JLabel letrero;
     private javax.swing.JPanel login;
     private javax.swing.JMenuBar menu;
@@ -1561,6 +1584,7 @@ public class MiBiblioteca extends javax.swing.JFrame {
     private javax.swing.JTextField txtAutor;
     private javax.swing.JTextField txtBuscarPedido;
     private javax.swing.JTextField txtEditorial;
+    private javax.swing.JTextField txtMatricula;
     private javax.swing.JTextField txtTitulo;
     private com.toedter.calendar.JDateChooser txtfecha;
     private javax.swing.JTextArea txtinformacion_prestamo;

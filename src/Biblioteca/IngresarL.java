@@ -8,6 +8,15 @@ public class IngresarL {
     private String editorial;
     private String tipo;
     private String estado;
+    private String matri;
+
+    public String getMatri() {
+        return matri;
+    }
+
+    public void setMatri(String matri) {
+        this.matri = matri;
+    }
     
 
     public String getEstado() {
@@ -18,13 +27,14 @@ public class IngresarL {
         this.estado = estado;
     }
     
-    public IngresarL(String tipo, String titulo,String autor, String fecha,String editorial,String estado){
+    public IngresarL(String tipo, String titulo,String autor, String fecha,String editorial,String estado,String matri){
         this.tipo = tipo;
         this.titulo=titulo;
         this.autor=autor;
         this.fecha=fecha;
         this.editorial=editorial;
         this.estado=estado;
+        this.matri=matri;
     }
     
     public String getTipo() {
