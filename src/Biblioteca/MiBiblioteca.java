@@ -18,6 +18,7 @@ public class MiBiblioteca extends javax.swing.JFrame {
     FondoPanel fondo = new FondoPanel();
     static DefaultTableModel t = new DefaultTableModel();
     static DefaultTableModel ta = new DefaultTableModel();
+    static DefaultTableModel tax = new DefaultTableModel();
     ArrayList<IngresarL> listaElementos = new ArrayList<>();
     ArrayList<IngresarA> listaAlumnos = new ArrayList<>();
     int indice=-1;
@@ -27,10 +28,12 @@ public class MiBiblioteca extends javax.swing.JFrame {
     public MiBiblioteca() {
         this.setContentPane(fondo);
         initComponents();
+        visible(false);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         setLocationRelativeTo(null);
         t = (DefaultTableModel)tablaElementos.getModel();
         ta = (DefaultTableModel)tablaBiblioteca.getModel();
+        tax = (DefaultTableModel)tablaAlumno.getModel();
         MatriculaAlumno.addKeyListener(new KeyAdapter() {
         @Override
         public void keyTyped(KeyEvent e) {
@@ -121,6 +124,8 @@ public class MiBiblioteca extends javax.swing.JFrame {
         tablaBiblioteca = new javax.swing.JTable();
         jLabel22 = new javax.swing.JLabel();
         Alumnos = new javax.swing.JDialog();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        tablaAlumno = new javax.swing.JTable();
         jMenuBar1 = new javax.swing.JMenuBar();
         IngresarAlumnos = new javax.swing.JMenu();
         darAlta = new javax.swing.JMenuItem();
@@ -592,6 +597,7 @@ public class MiBiblioteca extends javax.swing.JFrame {
         jLabel21.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel21.setText("Estado:");
 
+        txt1.setEditable(false);
         txt1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txt1KeyTyped(evt);
@@ -609,6 +615,8 @@ public class MiBiblioteca extends javax.swing.JFrame {
                 txt3KeyTyped(evt);
             }
         });
+
+        txt6.setEditable(false);
 
         btnGuardado.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnGuardado.setText("Guardar");
@@ -738,6 +746,32 @@ public class MiBiblioteca extends javax.swing.JFrame {
 
         Alumnos.setTitle("Registro de alumnos");
 
+        tablaAlumno.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "Nombre", "Matricula"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tablaAlumno.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablaAlumnoMouseClicked(evt);
+            }
+        });
+        jScrollPane5.setViewportView(tablaAlumno);
+
         IngresarAlumnos.setText("Registrar Alumnos");
 
         darAlta.setText("Ingrasar nuevo alumno");
@@ -772,11 +806,17 @@ public class MiBiblioteca extends javax.swing.JFrame {
         Alumnos.getContentPane().setLayout(AlumnosLayout);
         AlumnosLayout.setHorizontalGroup(
             AlumnosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 787, Short.MAX_VALUE)
+            .addGroup(AlumnosLayout.createSequentialGroup()
+                .addGap(82, 82, 82)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 384, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(347, Short.MAX_VALUE))
         );
         AlumnosLayout.setVerticalGroup(
             AlumnosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 489, Short.MAX_VALUE)
+            .addGroup(AlumnosLayout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 539, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         RegistroAlumno.setTitle("Alumnos");
@@ -895,13 +935,19 @@ public class MiBiblioteca extends javax.swing.JFrame {
 
         login.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Bienvenido a tu biblioteca");
 
+        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Contraseña:");
 
+        jLabel3.setBackground(new java.awt.Color(255, 255, 255));
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Usuario:");
 
         usuarios.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Alumno", "Administrador" }));
@@ -987,7 +1033,7 @@ public class MiBiblioteca extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnCambiarUser);
-        btnCambiarUser.setBounds(30, 540, 153, 23);
+        btnCambiarUser.setBounds(30, 540, 200, 23);
 
         ActualizarElementos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/icons8-insertar-100.png"))); // NOI18N
         ActualizarElementos.setText("Actualizar");
@@ -1118,14 +1164,26 @@ public class MiBiblioteca extends javax.swing.JFrame {
         if(A.equals(usua)){
             if(C.equals(contra)){
                 login.setVisible(false);
-                cerrars.setEnabled(true);   
+                cerrars.setEnabled(true);
+                visible(true);
+                jMenu1.setVisible(true);
+                jMenu3.setVisible(true);
+                jMenu4.setVisible(true);
             }
             else{
                 JOptionPane.showMessageDialog(login, "Error no coinciden los datos!");
             }
         }else if(u.equals(usua)){
             login.setVisible(false);
-            cerrars.setEnabled(true); 
+            cerrars.setEnabled(true);
+            btnBuscar.setVisible(true);
+            btnsolicitar.setVisible(true);
+            btndevolucion.setVisible(true);
+            jMenu2.setVisible(true);
+            menu.setVisible(true);
+            jMenu1.setVisible(false);
+            jMenu3.setVisible(false);
+            jMenu4.setVisible(false);
         }
     }//GEN-LAST:event_btningresarActionPerformed
 
@@ -1134,6 +1192,7 @@ public class MiBiblioteca extends javax.swing.JFrame {
         pass.setText("");
         menu.setEnabled(false);
         cerrars.setEnabled(false);
+        visible(false);
     }//GEN-LAST:event_cerrarsActionPerformed
 
     private void menuLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuLibroActionPerformed
@@ -1188,7 +1247,16 @@ public class MiBiblioteca extends javax.swing.JFrame {
     }//GEN-LAST:event_GuardarRegistroActionPerformed
 
     private void btnCambiarUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCambiarUserActionPerformed
-        // TODO add your handling code here:
+        visible(false);
+        cerrars.setEnabled(true);
+        btnBuscar.setVisible(true);
+        btnsolicitar.setVisible(true);
+        btndevolucion.setVisible(true);
+        jMenu2.setVisible(true);
+        menu.setVisible(true);
+        jMenu1.setVisible(false);
+        jMenu3.setVisible(false);
+        jMenu4.setVisible(false);
     }//GEN-LAST:event_btnCambiarUserActionPerformed
 
     private void tablaElementosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaElementosMouseClicked
@@ -1296,6 +1364,7 @@ public class MiBiblioteca extends javax.swing.JFrame {
     private void btnIngresarUsuario1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarUsuario1ActionPerformed
         Alumnos.setSize(this.getSize());
         Alumnos.setVisible(true);
+        especial2();
     }//GEN-LAST:event_btnIngresarUsuario1ActionPerformed
 
     private void btnEliminarElementoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarElementoActionPerformed
@@ -1421,6 +1490,7 @@ public class MiBiblioteca extends javax.swing.JFrame {
             MatriculaAlumno.setText("");
             JOptionPane.showMessageDialog(RegistroAlumno,"Alumno registrado..");
         }
+        especial2();
     }//GEN-LAST:event_registroAActionPerformed
 
     private void eliminarAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarAlumnoActionPerformed
@@ -1456,6 +1526,7 @@ public class MiBiblioteca extends javax.swing.JFrame {
         else{
             JOptionPane.showMessageDialog(RegistroAlumno,"Hay un campo vacio..");
         }
+        especial2();
     }//GEN-LAST:event_actualizarInfActionPerformed
 
     private void EliminarInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarInfoActionPerformed
@@ -1467,6 +1538,7 @@ public class MiBiblioteca extends javax.swing.JFrame {
             RegistroAlumno.dispose();
             indice=-1;
         }
+        especial2();
     }//GEN-LAST:event_EliminarInfoActionPerformed
 
     private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed
@@ -1548,7 +1620,26 @@ public class MiBiblioteca extends javax.swing.JFrame {
         txtMatricula.setText("");
         txtinformacion_prestamo.setText("");
     }//GEN-LAST:event_btndevolverActionPerformed
+
+    private void tablaAlumnoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaAlumnoMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tablaAlumnoMouseClicked
     
+    public void especial2(){
+        int a=tax.getRowCount();      
+        while(a!=0){ // Ciclo para Borrar la Tabla 1
+            if(a!=0)
+               tax.removeRow(0);                      
+            a=tax.getRowCount();        
+        }
+        for (IngresarA c:listaAlumnos){
+            Object[] fila= {c.getNombre(),
+                c.getMatricula()
+        };
+         tax.addRow(fila);
+        }
+        tablaAlumno.setModel(tax); 
+    }
     
     public static void buscar(ArrayList<IngresarL> libro,JTable x) {
         for (IngresarL a : libro) {
@@ -1658,6 +1749,16 @@ public class MiBiblioteca extends javax.swing.JFrame {
         return cont;
     }
     
+    public void visible(boolean x){
+        ActualizarElementos.setVisible(x);
+        btnEliminarElemento.setVisible(x);
+        btnIngresarUsuario1.setVisible(x);
+        btnBuscar.setVisible(x);
+        btnsolicitar.setVisible(x);
+        btndevolucion.setVisible(x);
+        menu.setVisible(x);
+        btnCambiarUser.setVisible(x);
+    }
     
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -1763,6 +1864,7 @@ public class MiBiblioteca extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JLabel letrero;
     private javax.swing.JPanel login;
     private javax.swing.JMenuBar menu;
@@ -1774,6 +1876,7 @@ public class MiBiblioteca extends javax.swing.JFrame {
     private javax.swing.JPasswordField pass;
     private javax.swing.JButton registroA;
     private javax.swing.JTable tablaActualiza;
+    private javax.swing.JTable tablaAlumno;
     private javax.swing.JTable tablaBiblioteca;
     private javax.swing.JTable tablaElementos;
     private javax.swing.JLabel tituloRegistro;
