@@ -2,12 +2,17 @@ package Biblioteca;
 
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.Window;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.ImageIcon;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -29,6 +34,13 @@ public class MiBiblioteca extends javax.swing.JFrame {
     public MiBiblioteca() {
         this.setContentPane(fondo);
         initComponents();
+        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        MiBiblioteca.cerrarVentana(Registros, false);
+        MiBiblioteca.cerrarVentana(Prestamos, false);
+        MiBiblioteca.cerrarVentana(consulta, false);
+        MiBiblioteca.cerrarVentana(ActualizarEle, false);
+        MiBiblioteca.cerrarVentana(LaBiblioteca, false);
+        MiBiblioteca.cerrarVentana(Alumnos, false);
         visible(false);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         setLocationRelativeTo(null);
@@ -170,7 +182,7 @@ public class MiBiblioteca extends javax.swing.JFrame {
         jMenu4 = new javax.swing.JMenu();
         menuSolicitar = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
-        jMenuItem5 = new javax.swing.JMenuItem();
+        menuCorte = new javax.swing.JMenuItem();
 
         Registros.setTitle("Registrar ");
 
@@ -981,6 +993,11 @@ public class MiBiblioteca extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Gestor De Biblioteca");
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
         getContentPane().setLayout(null);
 
         login.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -1198,14 +1215,14 @@ public class MiBiblioteca extends javax.swing.JFrame {
 
         jMenu1.setText("Reportes");
 
-        jMenuItem5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/icons8-reporte-de-negocios-16.png"))); // NOI18N
-        jMenuItem5.setText("Corte");
-        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+        menuCorte.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/icons8-reporte-de-negocios-16.png"))); // NOI18N
+        menuCorte.setText("Corte");
+        menuCorte.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem5ActionPerformed(evt);
+                menuCorteActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem5);
+        jMenu1.add(menuCorte);
 
         menu.add(jMenu1);
 
@@ -1379,17 +1396,22 @@ public class MiBiblioteca extends javax.swing.JFrame {
     private void btnSolicitarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSolicitarActionPerformed
         txtinformacion_prestamo.setText("");
         letrero.setText("");
-        Solicitante.setVisible(true);
-        etiqueta2.setText("Prestamo del elemento");
-        Solicitante.setBounds(0, 0, 500, 500);
-        Solicitante.setLocationRelativeTo(null);
-        btndevolver.setVisible(false);
-        btnAceptarLibro.setVisible(true);
         IngresarL zxx= listaElementos.get(w);
-        txtinformacion_prestamo.setText(zxx.toString());
+        if(zxx.getEstado().equals("OCUPADO")){
+           JOptionPane.showMessageDialog(Prestamos, "No puede solicitar el libro, esta ocupado");
+           txtBuscarPedido.setText("");
+        }else{
+            Solicitante.setVisible(true);
+            etiqueta2.setText("Prestamo del elemento");
+            Solicitante.setBounds(0, 0, 500, 500);
+            Solicitante.setLocationRelativeTo(null);
+            btndevolver.setVisible(false);
+            btnAceptarLibro.setVisible(true);
+            txtinformacion_prestamo.setText(zxx.toString());
+        }
     }//GEN-LAST:event_btnSolicitarActionPerformed
 
-    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+    private void menuCorteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCorteActionPerformed
         etiqueta.setText("Reporte de elementos");
         btnEliminar.setVisible(false);
         mostrarTabla(tablaElementos);
@@ -1397,7 +1419,7 @@ public class MiBiblioteca extends javax.swing.JFrame {
         consulta.setSize(this.getSize());
         consulta.setTitle("Reporte y cierre de biblioteca");
         btnCierre.setVisible(true);
-    }//GEN-LAST:event_jMenuItem5ActionPerformed
+    }//GEN-LAST:event_menuCorteActionPerformed
 
     private void btnAceptarLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarLibroActionPerformed
         IngresarL zx = listaElementos.get(w);
@@ -1473,6 +1495,16 @@ public class MiBiblioteca extends javax.swing.JFrame {
     }//GEN-LAST:event_btnActualizarActionPerformed
 
     private void btnGuardadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardadoActionPerformed
+        if(txtfech.getDate() == null){
+            String fecha1=txt4.getText();
+            SimpleDateFormat formato=new SimpleDateFormat("dd MMMM yyyy");
+            try{
+                Date fechaA=formato.parse(fecha1);
+                txtfech.setDate(fechaA);
+            }catch(ParseException e){
+                JOptionPane.showMessageDialog(null, "Fecha inválida");
+            }
+        }
         if(txt1.getText().trim().isEmpty() || txt2.getText().trim().isEmpty() || txt3.getText().trim().isEmpty()
                 || txtfech.getDate() == null || txt5.getText().trim().isEmpty() || txt6.getText().trim().isEmpty()){
             JOptionPane.showMessageDialog(Registros, "Hay un campo vacío");
@@ -1496,13 +1528,22 @@ public class MiBiblioteca extends javax.swing.JFrame {
         txt5.setText("");
         txt6.setText("");
         Actualizando.setVisible(false);
+        JOptionPane.showMessageDialog(Actualizando, "Información Actualizada");
     }//GEN-LAST:event_btnGuardadoActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        IngresarL zx= listaElementos.get(xy);
-        listaElementos.remove(zx);
-        mostrarTabla(tablaActualiza);
-        btnEliminar.setEnabled(false);
+        int r = JOptionPane.showConfirmDialog(RegistroAlumno, "¿Está seguro de eliminar el registro?", "Confirmar eliminación", JOptionPane.YES_NO_OPTION);
+        if(r==0){
+            IngresarL zx= listaElementos.get(xy);
+            if(zx.getEstado().equals("OCUPADO")){
+               JOptionPane.showMessageDialog(Prestamos, "No puede eliminar el libro, esta ocupado");
+               txtBuscarPedido.setText("");
+            }else{
+                listaElementos.remove(zx);
+                mostrarTabla(tablaActualiza);
+                JOptionPane.showMessageDialog(Prestamos, "Información Eliminada");
+            }
+        }   
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btndevolucionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btndevolucionActionPerformed
@@ -1536,21 +1577,25 @@ public class MiBiblioteca extends javax.swing.JFrame {
     }//GEN-LAST:event_darAltaActionPerformed
 
     private void actualizarInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarInfoActionPerformed
-        indice = BuscarMatricula();
-        if(indice>-1){
-            RegistroAlumno.setBounds(0, 0, 500, 500);
-            RegistroAlumno.setLocationRelativeTo(null);
-            RegistroAlumno.setVisible(true);
-            tituloRegistro.setText("Actualizar información de alumno");
-            registroA.setVisible(false);
-            EliminarInfo.setVisible(false);
-            actualizarInf.setVisible(true);
-            IngresarA a = listaAlumnos.get(indice);
-            nombre.setText(a.getNombre());
-            MatriculaAlumno.setText(a.getMatricula());
-        }
-        else{
-            JOptionPane.showMessageDialog(Alumnos,"Datos incorrectos..");
+        if(!listaAlumnos.isEmpty()){
+            indice = BuscarMatricula();
+            if(indice>-1){
+                RegistroAlumno.setBounds(0, 0, 500, 500);
+                RegistroAlumno.setLocationRelativeTo(null);
+                RegistroAlumno.setVisible(true);
+                tituloRegistro.setText("Actualizar información de alumno");
+                registroA.setVisible(false);
+                EliminarInfo.setVisible(false);
+                actualizarInf.setVisible(true);
+                IngresarA a = listaAlumnos.get(indice);
+                nombre.setText(a.getNombre());
+                MatriculaAlumno.setText(a.getMatricula());
+            }
+            else{
+                JOptionPane.showMessageDialog(Alumnos,"Datos incorrectos..");
+            }
+        }else{
+             JOptionPane.showMessageDialog(Alumnos,"No hay datos");
         }
     }//GEN-LAST:event_actualizarInfoActionPerformed
 
@@ -1585,21 +1630,25 @@ public class MiBiblioteca extends javax.swing.JFrame {
     }//GEN-LAST:event_registroAActionPerformed
 
     private void eliminarAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarAlumnoActionPerformed
-        indice=BuscarMatricula();
-        if(indice>-1){
-            RegistroAlumno.setBounds(0, 0, 500, 500);
-            RegistroAlumno.setLocationRelativeTo(null);
-            RegistroAlumno.setVisible(true);
-            tituloRegistro.setText("Eliminar información de alumno");
-            registroA.setVisible(false);
-            EliminarInfo.setVisible(true);
-            actualizarInf.setVisible(false);
-            IngresarA a = listaAlumnos.get(indice);
-            nombre.setText(a.getNombre());
-            MatriculaAlumno.setText(a.getMatricula());
-        }
-        else{
-            JOptionPane.showMessageDialog(Alumnos,"Datos incorrectos..");
+        if(!listaAlumnos.isEmpty()){
+            indice=BuscarMatricula();
+            if(indice>-1){
+                RegistroAlumno.setBounds(0, 0, 500, 500);
+                RegistroAlumno.setLocationRelativeTo(null);
+                RegistroAlumno.setVisible(true);
+                tituloRegistro.setText("Eliminar información de alumno");
+                registroA.setVisible(false);
+                EliminarInfo.setVisible(true);
+                actualizarInf.setVisible(false);
+                IngresarA a = listaAlumnos.get(indice);
+                nombre.setText(a.getNombre());
+                MatriculaAlumno.setText(a.getMatricula());
+            }
+            else{
+                JOptionPane.showMessageDialog(Alumnos,"Datos incorrectos..");
+            }
+        }else{
+            JOptionPane.showMessageDialog(Alumnos,"No hay datos");
         }
     }//GEN-LAST:event_eliminarAlumnoActionPerformed
 
@@ -1621,7 +1670,8 @@ public class MiBiblioteca extends javax.swing.JFrame {
     }//GEN-LAST:event_actualizarInfActionPerformed
 
     private void EliminarInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarInfoActionPerformed
-        if(indice>-1){
+        int r = JOptionPane.showConfirmDialog(RegistroAlumno, "¿Está seguro de eliminar el registro?", "Confirmar eliminación", JOptionPane.YES_NO_OPTION);
+        if(indice>-1 && r==0){
             listaAlumnos.remove(indice);
             JOptionPane.showMessageDialog(RegistroAlumno,"Información eliminada..");
             nombre.setText("");
@@ -1722,6 +1772,13 @@ public class MiBiblioteca extends javax.swing.JFrame {
         mostrarTabla(tablaElementos);
         consulta.setVisible(false);
     }//GEN-LAST:event_btnCierreActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        int r = JOptionPane.showConfirmDialog(this, "¿Está seguro de salir?", "Confirmar Salida", JOptionPane.YES_NO_OPTION);
+                if(r==JOptionPane.YES_OPTION){
+                    dispose();
+                }
+    }//GEN-LAST:event_formWindowClosing
     
     public void especial2(){
         int a=tax.getRowCount();      
@@ -1858,6 +1915,25 @@ public class MiBiblioteca extends javax.swing.JFrame {
         btnCambiarUser.setVisible(x);
     }
     
+    public static void cerrarVentana(JDialog ventana, boolean cerrar){
+        ventana.setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        ventana.addWindowListener(new WindowAdapter(){
+            @Override
+            public void windowClosing(WindowEvent e){
+                int r = JOptionPane.showConfirmDialog(ventana, "¿Está seguro de salir?", "Confirmar Salida", JOptionPane.YES_NO_OPTION);
+                if(r==JOptionPane.YES_OPTION){
+                    if(cerrar){
+                        System.exit(0);
+                    }
+                    else{
+                        ventana.dispose();
+                    }
+                }
+            }
+        });
+    }
+    
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -1965,7 +2041,6 @@ public class MiBiblioteca extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
@@ -1974,6 +2049,7 @@ public class MiBiblioteca extends javax.swing.JFrame {
     private javax.swing.JLabel letrero;
     private javax.swing.JPanel login;
     private javax.swing.JMenuBar menu;
+    private javax.swing.JMenuItem menuCorte;
     private javax.swing.JMenuItem menuLibro;
     private javax.swing.JMenuItem menuRevista;
     private javax.swing.JMenuItem menuSolicitar;
