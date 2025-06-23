@@ -108,6 +108,7 @@ public class MiBiblioteca extends javax.swing.JFrame {
         GuardarRegistro = new javax.swing.JButton();
         CancelarRegistro = new javax.swing.JButton();
         txtfecha = new com.toedter.calendar.JDateChooser();
+        ((javax.swing.JTextField)txtfecha.getDateEditor().getUiComponent()).setEditable(false);
         Prestamos = new javax.swing.JDialog();
         btnBuscarPedido = new javax.swing.JButton();
         txtBuscarPedido = new javax.swing.JTextField();
@@ -151,6 +152,7 @@ public class MiBiblioteca extends javax.swing.JFrame {
         txt6 = new javax.swing.JTextField();
         btnGuardado = new javax.swing.JButton();
         txtfech = new com.toedter.calendar.JDateChooser();
+        ((javax.swing.JTextField)txtfech.getDateEditor().getUiComponent()).setEditable(false);
         LaBiblioteca = new javax.swing.JDialog();
         jScrollPane4 = new javax.swing.JScrollPane();
         tablaBiblioteca = new javax.swing.JTable();
@@ -242,40 +244,40 @@ public class MiBiblioteca extends javax.swing.JFrame {
             }
         });
 
+        txtfecha.setMaxSelectableDate(new java.util.Date(1750748463000L));
+        txtfecha.setMinSelectableDate(new java.util.Date(-2208961341000L));
+
         javax.swing.GroupLayout RegistrosLayout = new javax.swing.GroupLayout(Registros.getContentPane());
         Registros.getContentPane().setLayout(RegistrosLayout);
         RegistrosLayout.setHorizontalGroup(
             RegistrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(RegistrosLayout.createSequentialGroup()
-                .addGroup(RegistrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(RegistrosLayout.createSequentialGroup()
-                        .addGap(320, 320, 320)
-                        .addComponent(jLabel5)
-                        .addGap(64, 64, 64)
-                        .addComponent(txtTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 326, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(RegistrosLayout.createSequentialGroup()
-                        .addGap(320, 320, 320)
-                        .addComponent(jLabel6)
-                        .addGap(65, 65, 65)
-                        .addComponent(txtAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 326, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(RegistrosLayout.createSequentialGroup()
-                        .addGap(419, 419, 419)
-                        .addComponent(jLabel4))
-                    .addGroup(RegistrosLayout.createSequentialGroup()
-                        .addGap(320, 320, 320)
-                        .addGroup(RegistrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel7))
-                        .addGap(55, 55, 55)
-                        .addGroup(RegistrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtEditorial)
-                            .addComponent(txtfecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addGap(203, 203, 203))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, RegistrosLayout.createSequentialGroup()
+                .addGap(419, 419, 419)
+                .addComponent(jLabel4))
+            .addGroup(RegistrosLayout.createSequentialGroup()
+                .addGap(320, 320, 320)
+                .addComponent(jLabel5)
+                .addGap(64, 64, 64)
+                .addComponent(txtTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 326, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(RegistrosLayout.createSequentialGroup()
+                .addGap(320, 320, 320)
+                .addComponent(jLabel6)
+                .addGap(65, 65, 65)
+                .addComponent(txtAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 326, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(RegistrosLayout.createSequentialGroup()
+                .addGap(347, 347, 347)
                 .addComponent(GuardarRegistro)
                 .addGap(128, 128, 128)
-                .addComponent(CancelarRegistro)
-                .addGap(356, 356, 356))
+                .addComponent(CancelarRegistro))
+            .addGroup(RegistrosLayout.createSequentialGroup()
+                .addGap(320, 320, 320)
+                .addGroup(RegistrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel8)
+                    .addComponent(jLabel7))
+                .addGap(55, 55, 55)
+                .addGroup(RegistrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtEditorial, javax.swing.GroupLayout.DEFAULT_SIZE, 326, Short.MAX_VALUE)
+                    .addComponent(txtfecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         RegistrosLayout.setVerticalGroup(
             RegistrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -283,26 +285,31 @@ public class MiBiblioteca extends javax.swing.JFrame {
                 .addGap(76, 76, 76)
                 .addComponent(jLabel4)
                 .addGap(64, 64, 64)
-                .addGroup(RegistrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
+                .addGroup(RegistrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(RegistrosLayout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(jLabel5))
+                    .addComponent(txtTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(RegistrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtAutor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6))
+                .addGroup(RegistrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(RegistrosLayout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(jLabel6))
+                    .addComponent(txtAutor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(12, 12, 12)
                 .addGroup(RegistrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel7)
                     .addComponent(txtfecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(15, 15, 15)
-                .addGroup(RegistrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
+                .addGroup(RegistrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(RegistrosLayout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(jLabel8))
                     .addComponent(txtEditorial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(63, 63, 63)
                 .addGroup(RegistrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(GuardarRegistro)
-                    .addComponent(CancelarRegistro))
-                .addContainerGap(67, Short.MAX_VALUE))
+                    .addComponent(CancelarRegistro)))
         );
 
         Prestamos.setTitle("Solicitar Elemento");
@@ -684,6 +691,9 @@ public class MiBiblioteca extends javax.swing.JFrame {
             }
         });
 
+        txtfech.setMaxSelectableDate(new java.util.Date(1750834918000L));
+        txtfech.setMinSelectableDate(new java.util.Date(-2208961286000L));
+
         javax.swing.GroupLayout ActualizandoLayout = new javax.swing.GroupLayout(Actualizando.getContentPane());
         Actualizando.getContentPane().setLayout(ActualizandoLayout);
         ActualizandoLayout.setHorizontalGroup(
@@ -700,16 +710,16 @@ public class MiBiblioteca extends javax.swing.JFrame {
                             .addComponent(jLabel20)
                             .addComponent(jLabel21))
                         .addGap(29, 29, 29)
-                        .addGroup(ActualizandoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(ActualizandoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txt3, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txt2, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txt1, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txt5, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txt6, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(ActualizandoLayout.createSequentialGroup()
-                                .addComponent(txt4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(35, 35, 35)
-                                .addComponent(txtfech, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(txt4, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtfech, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addGroup(ActualizandoLayout.createSequentialGroup()
                         .addGap(115, 115, 115)
                         .addGroup(ActualizandoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -736,20 +746,21 @@ public class MiBiblioteca extends javax.swing.JFrame {
                     .addComponent(txt3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(ActualizandoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(ActualizandoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel19)
-                        .addComponent(txt4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(ActualizandoLayout.createSequentialGroup()
+                        .addGroup(ActualizandoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel19)
+                            .addComponent(txt4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(ActualizandoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel20)
+                            .addComponent(txt5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(ActualizandoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel21)
+                            .addComponent(txt6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(30, 30, 30)
+                        .addComponent(btnGuardado))
                     .addComponent(txtfech, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(ActualizandoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel20)
-                    .addComponent(txt5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(ActualizandoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel21)
-                    .addComponent(txt6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
-                .addComponent(btnGuardado)
                 .addContainerGap(145, Short.MAX_VALUE))
         );
 
