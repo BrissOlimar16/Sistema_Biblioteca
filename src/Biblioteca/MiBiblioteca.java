@@ -17,6 +17,8 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.KeyStroke;
 import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
 
@@ -73,6 +75,21 @@ public class MiBiblioteca extends javax.swing.JFrame {
                     e.consume();
         }
         });
+        pegar(nombre);
+        pegar(MatriculaAlumno);
+        pegar(txt1);
+        pegar(txt2);
+        pegar(txt3);
+        pegar(txt4);
+        pegar(txt5);
+        pegar(txt6);
+        pegar(txtMatricula);
+        pegar(txtTitulo);
+        pegar(txtAutor);
+        pegar(txtEditorial);
+        pegar(txtBuscarPedido);
+
+
     }
     
     @SuppressWarnings("unchecked")
@@ -1618,13 +1635,13 @@ public class MiBiblioteca extends javax.swing.JFrame {
                     break;
                 }
             }
-        }
-        if(!n){
-            IngresarA A=new IngresarA(nombre.getText().toUpperCase().trim(),MatriculaAlumno.getText());
-            listaAlumnos.add(A);
-            nombre.setText("");
-            MatriculaAlumno.setText("");
-            JOptionPane.showMessageDialog(RegistroAlumno,"Alumno registrado..");
+             if(!n){
+                IngresarA A=new IngresarA(nombre.getText().toUpperCase().trim(),MatriculaAlumno.getText());
+                listaAlumnos.add(A);
+                nombre.setText("");
+                MatriculaAlumno.setText("");
+                JOptionPane.showMessageDialog(RegistroAlumno,"Alumno registrado..");
+            }
         }
         especial2();
     }//GEN-LAST:event_registroAActionPerformed
@@ -1653,15 +1670,19 @@ public class MiBiblioteca extends javax.swing.JFrame {
     }//GEN-LAST:event_eliminarAlumnoActionPerformed
 
     private void actualizarInfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarInfActionPerformed
-        if(indice>-1 && nombre.getText()!=null || MatriculaAlumno.getText()!=null){
-            IngresarA alumno = listaAlumnos.get(indice);
-            alumno.setNombre(nombre.getText().toUpperCase().trim());
-            alumno.setMatricula(MatriculaAlumno.getText());
-            JOptionPane.showMessageDialog(RegistroAlumno,"Información actualizada..");
-            nombre.setText("");
-            MatriculaAlumno.setText("");
-            RegistroAlumno.dispose();
-            indice=-1;
+        if(indice>-1){
+            if(nombre.getText().trim().isEmpty() || MatriculaAlumno.getText().trim().isEmpty()){
+                JOptionPane.showMessageDialog(RegistroAlumno, "Hay un campo vacío");
+            }else{
+                IngresarA alumno = listaAlumnos.get(indice);
+                alumno.setNombre(nombre.getText().toUpperCase().trim());
+                alumno.setMatricula(MatriculaAlumno.getText());
+                JOptionPane.showMessageDialog(RegistroAlumno,"Información actualizada..");
+                nombre.setText("");
+                MatriculaAlumno.setText("");
+                RegistroAlumno.dispose();
+                indice=-1;
+            }
         }
         else{
             JOptionPane.showMessageDialog(RegistroAlumno,"Hay un campo vacio..");
@@ -1933,6 +1954,11 @@ public class MiBiblioteca extends javax.swing.JFrame {
         });
     }
     
+     public void pegar(JTextField N){
+        N.setTransferHandler(null);
+        N.getInputMap().put(KeyStroke.getKeyStroke("ctrl V"), "none");
+    }
+
     
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
